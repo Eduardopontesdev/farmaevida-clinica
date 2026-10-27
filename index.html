@@ -120,33 +120,6 @@ body[data-v=p] .sv .cb{width:26px;height:26px}
 }
 @media print{body[data-v=c] #pt{display:none!important}body[data-v=c] #cl{display:block!important}body[data-v=c] .clinic{border:0!important;height:auto!important;overflow:visible!important;display:block!important}body[data-v=c] .ch,body[data-v=c] .ct,body[data-v=c] .cl,body[data-v=c] .thh,body[data-v=c] .tabs,body[data-v=c] .rvb,body[data-v=c] .cd.c{display:none!important}body[data-v=c] .cv{overflow:visible!important;padding:0!important;height:auto!important}body[data-v=c] .cht{display:block!important}}
 .alb{display:flex;gap:10px;align-items:flex-start;border-radius:14px;padding:12px;margin-bottom:10px;font-size:13px}.alb .t{flex:1;min-width:0}.alb .t b{display:block;font-size:14px;margin-bottom:2px}
-/* ===== CLÍNICA: layout responsivo (celular, tablet, notebook, tela grande) ===== */
-body[data-v=c]{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
-body[data-v=c] .hd{max-width:none;padding:8px clamp(10px,2vw,24px)}
-body[data-v=c] .stage{max-width:none;padding:0 clamp(0px,1.5vw,20px) clamp(0px,1.5vw,16px)}
-body[data-v=c] .clinic{border-radius:clamp(0px,2vw,22px)}
-body[data-v=c] .ct{flex-wrap:nowrap;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-body[data-v=c] .ct::-webkit-scrollbar{display:none}
-body[data-v=c] .ct .tab{flex:none;scroll-snap-align:start}
-body[data-v=c] .cv{padding:clamp(10px,2.4vw,28px) clamp(10px,2.4vw,32px) calc(clamp(10px,2.4vw,28px) + env(safe-area-inset-bottom));overflow-x:hidden}
-body[data-v=c] .cv>*{max-width:1100px;margin-left:auto;margin-right:auto}
-body[data-v=c] .cv .cin{bottom:calc(-1 * clamp(10px,2.4vw,28px))}
-body[data-v=c] .cd.c .t{min-width:0;overflow-wrap:anywhere}
-@media(max-width:700px){body[data-v=c] .note{display:none}body[data-v=c] .ch{padding:10px 12px}body[data-v=c] .ch b{font-size:16px}}
-@media(min-width:600px) and (max-width:899px){body[data-v=c] .ct{flex-wrap:wrap}}
-@media(min-width:900px){
-body[data-v=c] .clinic{display:grid;grid-template-columns:clamp(190px,18vw,260px) 1fr;grid-template-rows:auto 1fr;font-size:15px}
-body[data-v=c] .ch{grid-column:1/-1}
-body[data-v=c] .ct{grid-column:1;grid-row:2;flex-direction:column;flex-wrap:nowrap;overflow-y:auto;overflow-x:hidden;border-bottom:0;border-right:1px solid var(--line);padding:12px 10px;gap:4px}
-body[data-v=c] .ct .tab{width:100%;text-align:left;border-radius:12px;padding:11px 14px;font-size:14px;background:transparent;border-color:transparent}
-body[data-v=c] .ct .tab.on{background:var(--gl);color:var(--g);border-color:var(--g)}
-body[data-v=c] .cv{grid-column:2;grid-row:2;min-height:0}
-body[data-v=c] .cv h3{font-size:15px}
-body[data-v=c] .cd.c{padding:14px}
-}
-@media(min-width:1500px){body[data-v=c] .clinic{font-size:16px}body[data-v=c] .cv>*{max-width:1280px}}
-@media(pointer:coarse){body[data-v=c] .sm{padding:10px 16px}body[data-v=c] .tab{padding:10px 16px}body[data-v=c] input,body[data-v=c] select,body[data-v=c] textarea{min-height:44px;font-size:16px}}
-@media(max-height:520px) and (orientation:landscape){body[data-v=c] .hd{display:none}body[data-v=c] .ch{padding:6px 12px}}
 </style><script>document.write('<script src="supabase-config.js?t='+Date.now()+'"><\/script>')</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 </head><body data-v="c">
@@ -163,4 +136,18 @@ const save=()=>{try{localStorage.setItem('fvsim_'+ROLE,JSON.stringify(D))}catch(
 function push(){if(!DB)return;DB.set({json:JSON.stringify(D),by:CID,ts:Date.now()}).catch(()=>setSy(0))}
 function setSy(on){const e=$('#sy');if(e){e.textContent=on?'🟢 Sincronizado entre aparelhos':'⚪ Só neste aparelho';e.className='pl '+(on?'ok':'')}}
 const P={tab:'home',cart:{},svc:0,day:0,slot:'',ls:[],ld:0,lslot:'',view:null,seen:Date.now()},C={tab:'painel',seen:Date.now(),sb:(()=>{try{return JSON.parse(localStorage.getItem('fvsb'))||{}}catch(e){return{}}})(),cp:null,cf:null,ck:'Serviços'};
-let SV=[['Consulta Farmacêutica',80],['Consulta de Fitoterapia',70],['Consulta Estética',110]],PR=[['Losartana 50mg',12.9],['Metformina 850mg',14.7],['Vitamina D manipulada',39,'m'],['Valeriana 300mg',27.5,'f'],['Protetor solar FPS 50',54.9,'e'],['Ômega 3',36.9],['Magnésio dimalato 300mg',44,'m'],['Creme de ureia 10%',32,'m'],['Colágeno + vitamina C',58,'m'],['Gengibre em cápsulas',29,'f'],['Erva-ci
+let SV=[['Consulta Farmacêutica',80],['Consulta de Fitoterapia',70],['Consulta Estética',110]],PR=[['Losartana 50mg',12.9],['Metformina 850mg',14.7],['Vitamina D manipulada',39,'m'],['Valeriana 300mg',27.5,'f'],['Protetor solar FPS 50',54.9,'e'],['Ômega 3',36.9],['Magnésio dimalato 300mg',44,'m'],['Creme de ureia 10%',32,'m'],['Colágeno + vitamina C',58,'m'],['Gengibre em cápsulas',29,'f'],['Erva-cidreira 300mg',24,'f'],['Hortelã-pimenta em cápsulas',26,'f'],['Hidratante facial',68,'e'],['Gel de limpeza facial',42,'e']],SL=['09:00','10:30','14:00','15:30'],LS=['07:00','08:00','09:00','10:00'];
+const LB={'Hemograma completo':[['Hemoglobina','13,8','g/dL','12 a 16'],['Leucócitos','6.800','/mm³','4.000 a 10.000']],'Glicemia de jejum':[['Glicose','92','mg/dL','70 a 99']],'Perfil lipídico':[['Colesterol total','185','mg/dL','até 190'],['LDL','108','mg/dL','até 130']],'Vitamina D':[['25-OH vitamina D','27 ▼','ng/mL','30 a 100']],'TSH':[['TSH','2,1','µUI/mL','0,4 a 4,5']]};
+const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const days=()=>[0,1,2].map(i=>{const d=new Date();d.setDate(d.getDate()+i);return{v:ymd(d),l:i?i==1?'Amanhã':d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}):'Hoje'}});
+const cls=s=>({Confirmada:'ok',Atendida:'ok',Entregue:'ok','Resultado liberado':'ok',Cancelada:'x','Em preparo':'b','A caminho':'b',Coletado:'b','Orçamento enviado':'b',Aprovada:'b','Em manipulação':'b',Pronta:'ok'}[s]||'');
+const pill=s=>`<span class="pl ${cls(s)}">${esc(s)}</span>`;
+const nP=m=>D.notifs.unshift({id:uid(),m,ts:Date.now(),owner:CUR}),lC=m=>D.log.unshift({id:uid(),m,ts:Date.now(),owner:CUR});
+function S(f){f();save();R()}
+let toastT;function toast(m){const t=$('#ts');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),3200)}
+const busy=(d,t,k)=>D[k].some(x=>x.date==d&&x.time==t&&x.st!='Cancelada')||BUSY[k].some(x=>x.date==d&&x.time==t);
+/* ===== Paciente ===== */
+const PS={
+home(){const a=D.appts.find(x=>!['Cancelada','Atendida'].includes(x.st)),o=D.orders.find(x=>x.st!='Entregue'),l=D.labs.find(x=>x.st!='Resultado liberado'),fm=(D.manips||[]).find(x=>!['Entregue','Cancelada'].includes(x.st));
+const c=(i,t,s,p)=>`<div class="cd"><span class="ic">${i}</span><div class="t"><b>${t}</b><small>${s}</small></div>${p||''}</div>`;
+return `<button class="sm o" style="float:right;position:relative;z-index:1" onclick="P.tab='perfil';R()">👤 ${esc(PN())}</button><div class="br" style="font-size:26px;text-align:center;margin:6px 0 2px">Farma <span style="color:#7aa84a">&amp;</span> <i>Vida</i></div><p style="text-align:center;color:var(--mut);font-size:12px;margin-bottom:12px">Olá, ${esc(PN())}! Cuidar de você é o nosso
